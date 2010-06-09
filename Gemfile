@@ -8,3 +8,7 @@ gem "mysql", "2.8.1"
 
 gem "paperclip", "2.3.2"
 gem "authlogic", "2.1.5"
+
+group :development do
+  gem "mongrel", "1.1.5"
+end

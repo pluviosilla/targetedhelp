@@ -43,6 +43,7 @@
           - form_remote_for BioField.new, :url => {:controller => "bio", :action => "add_field"}, :html => {:id => "biofield_form"} do |f|
             = hidden_field_tag :bio_id, @recipient.bio.id
             %p= f.text_field :field_name, :size => "36"
+            -# %p= f.tinymce :content
             %p= f.text_area :content, :cols => "42", :rows => "8"
             %p= f.submit "Add Field"
   .grid_5.col2
