@@ -10,3 +10,4 @@ tmp/*
 *.swp
 Thumbs.db
 .idea/
+.bundle
