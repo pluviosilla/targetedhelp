@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <title>Targeted Help - Home</title>
+      <%= stylesheet_link_tag "main" %>
+      <%= stylesheet_link_tag "960" %>
+      <%= javascript_include_tag "fontjazz" %>
+      <%= javascript_include_tag "bluefont" %>
+  </head>
+  <body>
+    <% if user_signed_in? %>
+      Signed in as <%= current_user.email %>
+      <%= link_to "Sign Out", destroy_user_session_path %>
+    <% else %>
+      You are not signed in.
+      <%= link_to "Sign In", new_user_session_path %> or
+      <%= link_to "Sign Up", new_user_registration_path %>
+    <% end %>
+    <p class="notice"><%= flash[:notice] %></p>
+    <p class="alert"><%= flash[:alert] %></p>
+
+<div id="main">
+  <div id="top">
+     <%# THESE TWO DO NOT WORK %>
+     <%# image_tag ("targetedhelp.gif", style="float: left;") %>
+     <%# image_tag ("targetedhelp.gif", style => "float: left;") %>
+
+     <img src="/images/targetedhelp.gif" style="float: left;" />
+     <div id="menu">
+          <ul>
+              <%# li>image_tag "menu/home-selected.gif"</li %>
+              <li><%= link_to image_tag("menu/home-selected.gif"),
+                          :action=>'index'%></li>
+              <%# li>image_tag ("menu/people.gif")      </li %>
+              <li><%= link_to image_tag("menu/people.gif"),
+                          :action => 'people' %></li>
+              <%# li>image_tag ("menu/ministries.gif")      </li %>
+              <li><%= link_to image_tag("menu/ministries.gif"),
+                          :action => 'ministries' %></li>
+              <%# li>image_tag ("menu/microbusinesses.gif") </li %>
+              <li><%= link_to image_tag("menu/microbusinesses.gif"),
+                          :action => 'microbusinesses' %></li>
+              <%# li>image_tag ("menu/search.gif")          </li %>
+              <li><%= link_to image_tag("menu/search.gif"),
+                          :action => 'search' %></li>
+          </ul>
+      </div>
+  </div>
+  <% if @title_path %>
+    <%= @title_path %>
+  <% else %>
+    <%= image_tag ("bannertemp.jpg") %>
+  <% end %>
+
+    <%= yield %>
+</div>
+  <div id="footer">
+  &nbsp;
+</div>
+  
+<script type="text/javascript">
+     FontJazz.apply("h2", "bluefont");
+</script>
+  </body>
+</html>

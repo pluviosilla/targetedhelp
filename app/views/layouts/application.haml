@@ -1,0 +1,60 @@
+!!!
+%html
+  %head
+    %title Targeted Help.org
+    = stylesheet_link_tag "main"
+    = stylesheet_link_tag "960"
+    = javascript_include_tag "fontjazz"
+    = javascript_include_tag "bluefont"
+    = javascript_include_tag "smallfonts"
+    = javascript_include_tag :defaults
+    = javascript_include_tag "jquery.corner"
+
+  %body
+    #user_nav
+      - if current_user
+        = link_to "Edit Profile", edit_user_path(:current)
+        |
+        = link_to "Logout", logout_path
+      -else
+        = link_to "Register", new_user_path
+        |
+        = link_to "Login", login_path
+
+    -# - if user_signed_in?
+    -#  Signed in as #{current_user.email}
+    -#  = link_to "Sign Out", destroy_user_session_path
+    -# - else
+    -#  You are not signed in.
+    -#  = link_to "Sign In", new_user_session_path
+    -#  or
+    -#  = link_to "Sign Up", new_user_registration_path
+
+    %p.notice= flash[:notice]
+    %p.alert= flash[:alert]
+
+    #main
+      #top
+        <img src="/images/targetedhelp.gif" style="float: left;" />
+        #menu
+          %ul
+            %li= link_to image_tag("menu/home-selected.gif"), :controller => "site", :action=>'index'
+            %li= link_to image_tag("menu/people.gif"), :controller => 'recipients', :action => 'index'
+            %li= link_to image_tag("menu/ministries.gif"), :action => 'ministries'
+            %li= link_to image_tag("menu/microbusinesses.gif"), :action => 'microbusinesses'
+            %li= link_to image_tag("menu/search.gif"), :action => 'search'
+
+      - if @title_path
+        = @title_path
+      - else
+        = image_tag("bannertemp.jpg")
+      #middle
+        = yield
+
+    #footer-1col &nbsp;
+
+    :plain
+      <script type="text/javascript">
+         FontJazz.apply("h2", "bluefont");
+         FontJazz.apply("h4", "bluefont-small");
+      </script>

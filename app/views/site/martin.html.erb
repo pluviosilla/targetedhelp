@@ -1,0 +1,269 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Targeted Help - Home</title>
+    <%= stylesheet_link_tag "main" %>
+    <%= stylesheet_link_tag "960" %>
+    <%= stylesheet_link_tag "lightbox" %>
+    <%= javascript_include_tag "fontjazz" %>
+    <%= javascript_include_tag "bluefont" %>
+    <%= javascript_include_tag "smallfonts" %>
+    <%= javascript_include_tag "prototype" %>
+
+    <script src="javascripts/scriptaculous.js?load=effects,builder" type="text/javascript"></script>
+    <%= javascript_include_tag "lightbox" %>
+	<script type="text/javascript">
+		var activeText = "needs";
+		var activeTab;
+		var activeBlock;
+		function switchTab(tab,text,blockId) {
+			if(tab != activeTab) {
+				//FontJazz restyling when switching tabs
+				if(!activeTab) {
+					activeTab = document.getElementById('needs-tab');
+				}
+				tab.innerHTML = "<h5>" + text + "</h5>";
+				FontJazz.transform(tab.firstChild,"bluefont-small");
+				
+				activeTab.innerHTML = "<h5>" + activeText + "</h5>";
+				FontJazz.transform(activeTab.firstChild,"greyfont-small");
+				
+				activeText = text;
+				activeTab = tab;
+				
+				if(!activeBlock) {
+					document.getElementById('needs').style.display = "none";
+				}else{
+					activeBlock.style.display = "none";
+				}
+				activeBlock = document.getElementById(blockId);
+				activeBlock.style.display = "block";
+			}
+		}
+	</script>
+</head>
+<body>
+
+	<div id="main">
+    	<div id="top">
+	    	<img src="images/targetedhelp.gif" style="float: left;" />
+            <!--<img src="images/menu.png" style="float: left; padding-top: 27px;"  />-->
+            <div id="menu">
+            	<ul>
+                    <li><%= link_to image_tag("menu/home-selected.gif"), :action => 'index' %></li>
+                    <li><%= link_to image_tag("menu/people.gif"), :action => 'people' %></li>
+                    <li>image_tag ("menu/ministries.gif") </li>
+		    <li>image_tag ("menu/microbusinesses.gif") </li>
+                    <li>image_tag ("menu/search.gif") </li>
+                </ul>
+            </div>
+        </div>
+        image_tag ("images/bannermartin.jpg")
+        <div id="middle">
+            <div class="container_16">
+              	<div class="grid_10">
+                	<div class="item">
+                        <h2>Description</h2>
+                        <div class="person-item-content">
+                            <p><b>Name:</b> Martin</p>
+                            <p><b>Family:</b></p>
+                            <p style="text-indent:2em"><b>Mother:</b> 
+                            <font color="#FF0000">Missing Information</font></p>
+                            <p style="text-indent:2em"><b>Father:</b> 
+                            <font color="#FF0000">Missing Information</font></p>                            
+                            <p><b>Family Economics:</b></p>
+                            <div style="margin-left:2em">Father is a mostly unemployed carpinter. </div>
+                            <br/>
+                        </div>
+					</div>
+                    
+                  	<div class="tab-bar">
+                    	<ul>
+                        	<li id="needs-tab" onclick="switchTab(this,'needs','needs')"><h4>needs</h4></li>
+                            <li onclick="switchTab(this,'reccomendations','reccomendations')"><h5>reccomendations</h5></li>
+                            <li onclick="switchTab(this,'methods of contributing','methods')"><h5>methods of contributing</h5></li>
+                            <li onclick="switchTab(this,'contributors','contributors')"><h5>contributors</h5></li>
+                            <li onclick="switchTab(this,'photos','photos')"><h5>photos</h5></li>
+						</ul>              
+					</div>
+                    
+                    <div class="item" style="min-height: 650px;">
+                		<div id="needs" class="person-item" style="display: block;">
+                            <h2>Needs</h2>
+                            <div class="person-item-content">
+                                <p><b>Description of Illness:</b></p>
+                                <div style="margin-left:2em">Martin suffered brain damage at birth. 
+                                </div> 
+                                <br/>
+                                <p><b>Treatment Required:</b></p>
+                                <div style="margin-left:2em">Martin's parents are rural inhabitants of
+                                the municipality of Atlahuilco.</div>
+                                <p>When Martin is able to attend therapy sessions, he receives:</p> 
+                                <ul style="margin-left:2em">
+                                    <li type="disc"><font color="#FF0000">Missing Information</font></li>
+                                    <li type="disc"><font color="#FF0000">Missing Information</font></li>
+                                    <li type="disc"><font color="#FF0000">Missing Information</font></li> 
+                                </ul>
+                                <br/>
+                                <p><b>Financial Need</b></p>
+                                <div style="margin-left:2em">
+                                    Martin's parents take Martin to the nearest city, Orizaba,  
+                                    for treatments, but have great difficulty financing the trips.
+                                    <br/>
+                                    <ul style="margin-left:2em">
+                                        <li type="disc"><font color="#FF0000">Missing Information</font> in fees</li>
+                                        <li type="disc"><font color="#FF0000">Missing Information</font> 
+                                        per trip in bus tickets and other trip expenses</li>
+                                    </ul>
+                                    <br/>
+                                    <br/>
+                                </div>
+                            </div>
+                         </div>              
+                        <div id="reccomendations"  class="person-item">
+                            <h2>Recommendations</h2>
+                            <div class="person-item-content">
+                                <p></p>
+                                <div>
+                                    <h3><a href="johnstrong.html">John Strong</a></h3>
+                                    <p></p>
+                                    <a href="images/people/john/john-thumbnail1.gif" rel="lightbox[gallery]">
+                                        image_tag ("images/people/john/john-thumbnail1.gif")
+                                    </a>
+                                    <p></p>
+                                    <h3>Comments by John Strong</h3>
+                                    <p></p>
+                                    <p>
+                                    I personally visited the home of Martin. He is a very sick
+                                    child who suffered brain damage at birth, but Lázaro Martinez
+                                    of World Vision tells me that quite a lot can be done to make
+                                    him more comfortable and even functional. For instance, Martin
+                                    can be taught to hold himself in a sitting position. This would
+                                    be a giant relief for his family who currently must feed him lying
+                                    down. Martin can also be taught to grasp and hold things. Sounds
+                                    simple? Such things would bring relief to Martin and his family.
+                                    </p>
+                                    <p>
+                                    I vouch that this child has a genuine need and is deserving of
+                                    help. I do not know the family and cannot guarantee that they
+                                    would use the money correctly once they received it. They
+                                    obviously care about this child because of the time and energy
+                                    they invest in making him comfortable, but they might have other
+                                    pressures they consider a priority. A giver ought to make arrangements
+                                    to ensure that the money is spent correctly. Lázaro Martinez
+                                    ought to be able to help with that, and I vouch for Lázaro with
+                                    all my heart and soul.
+                                    </p>
+                                    <p>
+                                    The World Vision staff knows Martin's family well, because they
+                                    benefited from a program that World Vision launched to supply
+                                    water tanks (tinacos) to families that did not have water during
+                                    dry months. In the course of their many activities, World Vision
+                                    workers come to know the families they serve quite well and are
+                                    able to identify which families are the most needy. At my request,
+                                    the World Vision project leader, Lázaro introduced me to Silvia]
+                                    and her family. 
+                                    </p>
+                                    <p></p>
+                                    <p></p>
+                                </div>
+      
+                                <div>
+                                    <h3><a href="lazaromartinez.html">Lázaro Martinez</a></h3>
+                                    <p></p>                                
+                                    <a href="images/people/lazaro/lazaro-thumb3.jpg" rel="lightbox[gallery]">
+                                        image_tag ("images/people/lazaro/lazaro-thumb3.jpg")
+                                    </a>
+                                    <p></p>
+                                    <h3>Comments by Lázaro Martinez</h3>
+                                    <p></p>                                
+                                </div>
+                                <p></p>
+                                <p></p>
+                                <p></p>                            
+                                                            
+                            </div>
+                            <p></p>
+                            <p></p>
+                        </div>  
+                        <div id="methods"  class="person-item">
+                            <h2>Methods of Contributing</h2>
+                            <p></p>
+                            <p style="margin-left:2em"><b>No information available at this time.</b></p>
+                            <p></p>
+                            <p></p>
+                        </div>      
+                        <div id="contributors"  class="person-item">
+                            <h2>Contributors</h2>
+                            <p></p>
+                            <p></p>                        
+                            <p style="margin-left:2em">This section may well be the most important on the
+                            website. The purpose of this space is not to honor givers; it's purpose
+                            is to provide vital information to <i>potential</i> givers. Those who have
+                            already helped are better placed than anyone other than the NGO worker
+                            to relate experiences, share information about steps taken to guarantee 
+                            that the need is genuine, that the recipients are trustworthy, etc.</p> 
+                            
+                            <p style="margin-left:2em">This section will eventually migrate to a lightly moderated GoogleWave 
+                            to allow a very rich interaction between donors, potential donors and NGO workers.
+                            For now, we must rely on simpler summary (in HTML) of donor experiences and
+                            comments.</p>
+                            <p style="margin-left:2em"><b>Comments by People Who Have Contributed</b></p>
+                            <p style="margin-left:2em">None so far.</p>
+                            <p></p>
+                            <p></p>
+                        </div>  
+                        <div id="photos" class="person-item">
+                            <h2>Photos</h2>
+                            <div class="photos person-item-content">
+                                <div class="person-thumbnail">
+                                    <a href="images/people/martin/martin1.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/martin/martin-thumb1.jpg" />
+                                    </a>
+                                </div>
+                                <div class="person-thumbnail">
+                                    <a href="images/people/martin/martin2.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/martin/martin-thumb2.jpg" />
+                                    </a>
+                                </div>
+                                <div class="person-thumbnail">
+                                    <a href="images/people/martin/martin3.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/martin/martin-thumb3.jpg" />
+                                    </a>
+                                </div>
+                                <div class="person-thumbnail">
+                                    <a href="images/people/martin/martin4.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/martin/martin-thumb4.jpg" />
+                                    </a>
+                                </div>                                                   
+                            </div>
+                        </div>                                                                                           
+					</div>                                                          	
+				</div>
+                
+                <div class="grid_6 col2" style="height:950px;">
+                    <div class="column2-title col2-content">
+                        <h2>Google Wave</h2>
+                 	</div>
+                    <img src="images/wavetemp.gif" style="padding-left: 70px; padding-top: 10px;" />
+             	</div>  
+            </div>
+			<div class="clear"></div>
+		</div>
+       	<!--
+        <div style="height:6em">
+           
+        </div>
+        -->
+    </div>
+ 	<div id="footer">
+    	&nbsp;
+    </div>
+	  <script type="text/javascript">
+	  	 FontJazz.apply("h2", "bluefont");
+		 FontJazz.apply("h4","bluefont-small");
+		 FontJazz.apply("h5","greyfont-small");
+	  </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+nbproject/
+public/stylesheets/compiled/
+public/javascripts/*_packaged.js
+public/stylesheets/*_packaged.css
+public/system/*
+log/*
+!log/empty
+tmp/*
+*~
+*.swp
+Thumbs.db

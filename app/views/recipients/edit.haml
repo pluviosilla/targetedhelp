@@ -1,0 +1,66 @@
+.container_16
+  .grid_6
+    %h2 Edit
+    .person-item-content
+      - form_for @recipient, :html => { :multipart => true } do |f|
+        = f.error_messages
+        %p
+          = f.label :firstname
+          = f.text_field :firstname
+        %p
+          = f.label :lastname
+          = f.text_field :lastname
+        %p
+          = f.label :category_id
+          = f.text_field :category_id
+        %p
+          = f.label :banner_path
+          = f.text_field :banner_path
+        %br/
+        = f.submit "Update"
+  .grid_5.col2
+    .col2-contentwpadding
+      %h2 Bio
+      %p
+        %h4.blue Family Economics
+        - form_for @recipient.bio do |f|
+          %p= f.text_area :family_economics, :cols => "42", :rows => "8"
+          = f.submit "Update"
+      %p
+        %h4 Your bio fields
+        .default-padding
+          #bios
+            = render :partial => "/bio/biofield", :collection => @recipient.bio.bio_fields, :as => :bio_field
+            - if @recipient.bio.bio_fields.length == 0
+              #nobios
+                %span.blue.px19 no bio fields
+                %br/
+                %br/
+          %br/
+            
+        %h4 Add new bio field
+        #custombiofield
+          - form_remote_for BioField.new, :url => {:controller => "bio", :action => "add_field"}, :html => {:id => "biofield_form"} do |f|
+            = hidden_field_tag :bio_id, @recipient.bio.id
+            %p= f.text_field :field_name, :size => "36"
+            %p= f.text_area :content, :cols => "42", :rows => "8"
+            %p= f.submit "Add Field"
+  .grid_5.col2
+    .col2-contentwpadding
+      %h2 Avatar
+      = image_tag @recipient.avatar.url(:small)
+      %br/
+      %br/
+      - form_for @recipient, :html => { :multipart => true } do |f|
+        %p= f.file_field :avatar, :size => "25"
+        = f.submit "Upload Avatar"
+      %h2 Photos
+      - form_for @recipient, :html => { :multipart => true } do |f|
+        %p= f.file_field :data, :size => "25"
+        = f.submit "Upload Photo"
+
+.clear
+
+= link_to "Show", @recipient
+|
+= link_to "Back", recipients_path

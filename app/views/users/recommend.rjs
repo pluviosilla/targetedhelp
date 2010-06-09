@@ -1,0 +1,7 @@
+page.insert_html :top, 'new-recommendation', :partial => 'recommendation', :object => @recommendation
+page[:recommend_form].reset
+page.hide(:recommend)
+page.hide(:recommend_link)
+page.hide(:no_recommends)
+page.call "corners"
+page.call "reapplyJazz"

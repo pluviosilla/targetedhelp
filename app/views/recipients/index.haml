@@ -1,0 +1,40 @@
+.container_16
+  .grid_10
+    #sick
+      %h2 Sick
+      .catalog
+        - @sick_recipients.each do |recipient|
+          - link_to(recipient, :class => "grey") do
+            .catalog-item(style="margin-right: 70px;")
+              - if recipient.avatar
+                = image_tag recipient.avatar.url(:medium)
+              -else
+                %img(src="/images/people/unknown.jpg")/
+              %br/
+              =recipient.firstname + ' ' + recipient.lastname
+
+    #poor.invisible
+      %h2 Poor
+      .catalog
+        - @poor_recipients.each do |recipient|
+          - link_to(recipient, :class => "grey") do
+            .catalog-item(style="margin-right: 70px;")
+              %img(src="/images/people/unknown.jpg")/
+              %br/
+              =recipient.firstname + ' ' + recipient.lastname
+            
+  .grid_6.col2
+    #categories.col2-content
+      %div(style="padding-left: 24px;")
+        %h2 Categories
+      %br/
+      %ul(id="categories-list")
+        %li(class="selected-category" onclick="fadeCategory('sick',this);")
+          %h3 Sick
+        %li(class="category" onclick="fadeCategory('poor',this);")
+          %h3 Poor
+        %li(class="category")
+          %h3 Students
+
+-# = link_to 'New recipient', new_recipient_path
+.clear

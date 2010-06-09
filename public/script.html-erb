@@ -1,0 +1,7 @@
+#!/bin/bash
+for i in *.html
+do
+	echo "file = ${i}"
+	tmp=`echo $i | sed 's/.erb//'`
+	echo "modified file = ${tmp}" 
+done

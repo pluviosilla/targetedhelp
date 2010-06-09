@@ -1,0 +1,29 @@
+.container_16
+  .grid_10
+    %h2 Sick
+    .catalog
+      %a.grey(href="martin.html")
+        .catalog-item(style="margin-right: 70px;")
+          %img(src="/images/people/martin.jpg")/
+          %br/
+          Martin
+
+      %a.grey(href="silvia.html")
+        .catalog-item(style="margin-right: 70px;")
+          %img(src="/images/people/silvia.jpg")/
+          %br/
+          Silvia
+
+  .grid_6.col2
+    #categories.col2-content
+      %div(style="padding-left: 24px;")
+        %h2 Categories
+      %br/
+      %ul(id="categories-list")
+        %li(class="selected-category")
+          %h3 Sick
+        %li(class="category")
+          %h3 Poor
+        %li(class="category")
+          %h3 Students
+.clear

@@ -1,0 +1,4 @@
+- form_remote_for [user, Recommendation.new], :url => {:action => "recommend"}, :html => {:id => "recommend_form"}  do |f|
+  = hidden_field :user_id, user.id
+  %p= f.text_area :description, :cols => "42", :rows => "8"
+  %p= f.submit "Submit Recommendation"

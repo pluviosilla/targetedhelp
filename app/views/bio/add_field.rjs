@@ -1,0 +1,8 @@
+page.insert_html :top, 'bios', :partial => 'biofield', :locals => {:bio_field => @bio_field}
+page[:biofield_form].reset
+page.hide(:nobios)
+#page.hide(:recommend)
+#page.hide(:recommend_link)
+#page.hide(:no_recommends)
+#page.call "corners"
+page.call "reapplyJazz"

@@ -1,0 +1,17 @@
+<p>
+  <b>Firstname:</b>
+  <%=h @recipient.firstname %>
+</p>
+
+<p>
+  <b>Lastname:</b>
+  <%=h @recipient.lastname %>
+</p>
+
+<p>
+  <b>Category id:</b>
+  <%=h @recipient.category_id %>
+</p>
+
+<%= link_to 'Edit', edit_recipient_path(@recipient) %> |
+<%= link_to 'Back', recipients_path %>

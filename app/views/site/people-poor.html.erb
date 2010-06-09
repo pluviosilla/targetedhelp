@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Targeted Help - Home</title>
+    <%= stylesheet_link_tag "main" %>
+    <%= stylesheet_link_tag "960" %>
+    <%= javascript_include_tag "fontjazz" %>
+    <%= javascript_include_tag "bluefont" %>
+</head>
+<body>
+
+	<div id="main">
+    	<div id="top">
+	    image_tag ("images/targetedhelp.gif", style="float: left;")
+            <div id="menu">
+            	<ul>
+                    <li><%= link_to image_tag("menu/home-selected.gif"), :action => 'index' %></li>
+                    <li>image_tag ("menu/people-selected.gif") </li>
+                    <li>image_tag ("menu/ministries.gif") </li>
+		    <li>image_tag ("menu/microbusinesses.gif") </li>
+                    <li>image_tag ("menu/search.gif") </li>
+                </ul>
+            </div>
+        </div>
+        image_tag ("images/people-banner.gif")
+        <div id="middle">
+            <div class="container_16">
+              <div class="grid_10">
+                  <h2>Poor</h2>
+                  	<div class="catalog">
+                    	<a class="grey" href="lady.html">
+                        <div class="catalog-item" style="margin-right: 70px;">
+			image_tag ("images/people/lady.jpg")
+                        <br/>
+                        Juanita
+                        </div>
+                        </a>
+                    </div>
+		</div>
+                
+                <div class="grid_6 col2" >
+                    <div id="categories" class="col2-content">
+                        <div style="padding-left: 24px;"><h2>Categories</h2></div>
+                        <br/>
+                        <ul id="categories-list">
+                        	<a class="grey" href="people.html"><li class="category"><h3>Sick</h3></li></a>
+                        	<li class="selected-category"><h3>Poor</h3></li>
+                        	<li class="category"><h3>Students</h3></li>
+                        </ul>
+                 	</div>
+             	</div>  
+            </div>
+			<div class="clear"></div>
+		</div>
+    </div>
+ 	<div id="footer">
+    	&nbsp;
+    </div>
+	  <script type="text/javascript">
+	  	 FontJazz.apply("h2", "bluefont");
+	  </script>
+</body>
+</html>

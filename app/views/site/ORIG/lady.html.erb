@@ -1,0 +1,361 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Targeted Help - Home</title>
+    <%= stylesheet_link_tag "main" %>
+    <%= stylesheet_link_tag "960" %>
+    <%= stylesheet_link_tag "lightbox" %>
+    <%= javascript_include_tag "fontjazz" %>
+    <%= javascript_include_tag "bluefont" %>
+    <%= javascript_include_tag "smallfonts" %>
+    <%= javascript_include_tag "prototype.js" %>
+    <%= javascript_include_tag "lightbox.js" %>
+    <script src="javascripts/scriptaculous.js?load=effects,builder" type="text/javascript"></script>
+	<script type="text/javascript">
+		var activeText = "needs";
+		var activeTab;
+		var activeBlock;
+		function switchTab(tab,text,blockId) {
+			if(tab != activeTab) {
+				//FontJazz restyling when switching tabs
+				if(!activeTab) {
+					activeTab = document.getElementById('needs-tab');
+				}
+				tab.innerHTML = "<h5>" + text + "</h5>";
+				FontJazz.transform(tab.firstChild,"bluefont-small");
+				
+				activeTab.innerHTML = "<h5>" + activeText + "</h5>";
+				FontJazz.transform(activeTab.firstChild,"greyfont-small");
+				
+				activeText = text;
+				activeTab = tab;
+				
+				if(!activeBlock) {
+					document.getElementById('needs').style.display = "none";
+				}else{
+					activeBlock.style.display = "none";
+				}
+				activeBlock = document.getElementById(blockId);
+				activeBlock.style.display = "block";
+			}
+		}
+	</script>
+</head>
+<body>
+
+	<div id="main">
+    	<div id="top">
+	    	<img src="images/targetedhelp.gif" style="float: left;" />
+            <!--<img src="images/menu.png" style="float: left; padding-top: 27px;"  />-->
+            <div id="menu">
+            	<ul>
+                	<li><a href="index.html"><img src="images/menu/home.gif" /></a></li>
+                    <li><a href="people.html"><img src="images/menu/people.gif" /></a></li>
+                    <li><img src="images/menu/ministries.gif" /></li>
+					<li><img src="images/menu/microbusinesses.gif" /></li>
+                    <li><img src="images/menu/search.gif" /></li>
+                </ul>
+            </div>
+        </div>
+        <img src="images/bannerlady.jpg" />
+        <div id="middle">
+        
+            <div class="container_16">
+              	<div class="grid_10">
+                	<div class="item">
+                        <h2>Description</h2>
+                        <div class="person-item-content">
+                            <p>Desperately poor, Juanita has just one family member who is in no condition to help her.
+                            Her legs are deformed and useless. She must crawl around the (dirt) floor of her house and
+                            can not even lift herself into her wheelchair without help.</p>
+                            <p>Generous neighbors have built her a chicken coop with a small door next to the floor so
+                            that she can feed them while on the floor, but she does not have a good mechanism for
+                            storing grain or other provisions for her chickens. She could potentially raise a few
+                            more chickens if she had better provision.</p>
+                            <p>She does not have an adequate toilette.</p>
+                            <p>She has little ability to maintain good hygiene, no source of water at all, much less running
+                            or other utilities like electricity.</p>
+                            <p>She has not been to the doctor in years but suffers from pains and discomforts.</p>
+                        </div>
+					</div>
+                  	<div class="tab-bar">
+                        <ul>
+                            <li id="needs-tab" onclick="switchTab(this,'needs','needs')"><h4>needs</h4></li>
+                            <li onclick="switchTab(this,'reccomendations','reccomendations')"><h5>reccomendations</h5></li>
+                            <li onclick="switchTab(this,'methods of contributing','methods')"><h5>methods of contributing</h5></li>
+                            <li onclick="switchTab(this,'contributors','contributors')"><h5>contributors</h5></li>
+                            <li onclick="switchTab(this,'photos','photos')"><h5>photos</h5></li>
+                        </ul>              
+                    </div>                     
+                    <div class="item" style="min-height: 640px;">
+                        <div id="needs" class="person-item" style="display: block;">
+                            <h2>Needs</h2>
+                            <div class="person-item-content">
+                                <p>
+                                <ul>
+                                <li>Battery-operated device to lift her from the floor into her wheelchair</li>
+                                <li>Medical attention</li>
+                                <li>Equipment for making pottery</li>
+                                </ul>
+                                </p>
+                                <p></p>
+                                <p></p>
+                            </div>
+                            <p></p>
+                            <p></p>
+                        </div>
+                        <div id="reccomendations" class="person-item">
+                            <h2>Recommendations</h2>
+                            <div class="person-item-content">
+                                <p></p>
+                                <div>
+                                    <h3><a href="johnstrong.html">John Strong</a></h3>
+                                    <p></p>
+                                    <a href="images/people/john/john-thumbnail1.gif" rel="lightbox[gallery]">
+                                        <img src="images/people/john/john-thumbnail1.gif" />
+                                    </a>
+                                    <p></p>
+                                    <h3>Comments by John Strong</h3>
+                                    <p></p>
+                                    <p>
+                                    I personally visited the home of this woman. She is very
+                                    severely handicapped and desperately poor, but she has
+                                    adapted to her circumstances with truly remarkable 
+                                    ingenuity. The whole chicken coop idea with the door next
+                                    to the floor so that she could attend to their needs from
+                                    the floor was a stroke of genius.
+                                    </p>
+                                    <p>
+                                    Nevertheless, even though she has adapted to her circumstances
+                                    remarkably well, she would benefit enormously from receiving
+                                    financial support.
+                                    </p>
+                                    <p>
+                                    The World Vision staff has not had much direct contact with this
+                                    woman, but one of their sector leaders, Antonio has. When
+                                    Antonio learned that we were looking for the poorest of the poor
+                                    in his area, he led us to this woman's hut.
+                                    </p>
+                                    <p></p>
+                                    <p></p>
+                                </div>
+      
+                                <div>
+                                    <h3><a href="lazaromartinez.html">Lázaro Martinez</a></h3>
+                                    <p></p>                                
+                                    <a href="images/people/lazaro/lazaro-thumb3.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/lazaro/lazaro-thumb3.jpg" />
+                                    </a>
+                                    <p></p>
+                                    <h3>Comments by Lázaro Martinez</h3>
+                                    <p></p>                                
+                                </div>
+                                <p></p>
+                                <p></p>
+                                <p></p>                            
+                                                            
+                            </div>
+                            <p></p>
+                            <p></p>
+                        </div>
+                        <div id="methods" class="person-item">
+                            <h2>Methods of Contributing</h2>
+                            <p></p>
+                            <p style="margin-left:2em"><b>No information available at this time.</b></p>
+                            <p></p>
+                            <p></p>
+                        </div>      
+                        <div id="contributors" class="person-item">
+                            <h2>Contributors</h2>
+                            <p></p>
+                            <p></p>                        
+                            <p style="margin-left:2em">This section may well be the most important on the
+                            website. The purpose of this space is not to honor givers; it's purpose
+                            is to provide vital information to <i>potential</i> givers. Those who have
+                            already helped are better placed than anyone other than the NGO worker
+                            to relate experiences, share information about steps taken to guarantee 
+                            that the need is genuine, that the recipients are trustworthy, etc.</p> 
+                            
+                            <p style="margin-left:2em">This section will eventually migrate to a lightly moderated GoogleWave 
+                            to allow a very rich interaction between donors, potential donors and NGO workers.
+                            For now, we must rely on simpler summary (in HTML) of donor experiences and
+                            comments.</p>
+                            <p style="margin-left:2em"><b>Comments by People Who Have Contributed</b></p>
+                            <p style="margin-left:2em">None so far.</p>
+                            <p></p>
+                            <p></p>
+                        </div>                                                            
+                        <div id="photos" class="person-item">
+                            <h2>Photos</h2>
+                            <div class="photos person-item-content">
+                                <div class="person-thumbnail">
+                                    <a href="images/people/lady/1.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/lady/thumb1.jpg" />
+                                    </a>
+                                </div>
+                                <div class="person-thumbnail">
+                                    <a href="images/people/lady/2.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/lady/thumb2.jpg" />
+                                    </a>
+                                </div>
+                                <div class="person-thumbnail">
+                                    <a href="images/people/lady/3.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/lady/thumb3.jpg" />
+                                    </a>
+                                </div>
+                                <div class="person-thumbnail">
+                                    <a href="images/people/lady/4.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/lady/thumb4.jpg" />
+                                    </a>
+                                </div>  
+                                <div class="person-thumbnail">
+                                    <a href="images/people/lady/5.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/lady/thumb5.jpg" />
+                                    </a>
+                                </div>
+                                <div class="person-thumbnail">
+                                    <a href="images/people/lady/6.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/lady/thumb6.jpg" />
+                                    </a>
+                                </div>
+                                <div class="person-thumbnail">
+                                    <a href="images/people/lady/7.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/lady/thumb7.jpg" />
+                                    </a>
+                                </div>
+                                <div class="person-thumbnail">
+                                    <a href="images/people/lady/8.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/lady/thumb8.jpg" />
+                                    </a>
+                                </div>
+                                <div class="person-thumbnail">
+                                    <a href="images/people/lady/9.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/lady/thumb9.jpg" />
+                                    </a>
+                                </div>
+                                <div class="person-thumbnail">
+                                    <a href="images/people/lady/10.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/lady/thumb10.jpg" />
+                                    </a>
+                                </div>
+                                <div class="person-thumbnail">
+                                    <a href="images/people/lady/11.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/lady/thumb11.jpg" />
+                                    </a>
+                                </div>
+                                <div class="person-thumbnail">
+                                    <a href="images/people/lady/12.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/lady/thumb12.jpg" />
+                                    </a>
+                                </div>
+                                <div class="person-thumbnail">
+                                    <a href="images/people/lady/13.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/lady/thumb13.jpg" />
+                                    </a>
+                                </div>
+                                <div class="person-thumbnail">
+                                    <a href="images/people/lady/14.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/lady/thumb14.jpg" />
+                                    </a>
+                                </div>
+                                <div class="person-thumbnail">
+                                    <a href="images/people/lady/15.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/lady/thumb15.jpg" />
+                                    </a>
+                                </div>
+                                <div class="person-thumbnail">
+                                    <a href="images/people/lady/16.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/lady/thumb16.jpg" />
+                                    </a>
+                                </div>
+                                <div class="person-thumbnail">
+                                    <a href="images/people/lady/17.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/lady/thumb17.jpg" />
+                                    </a>
+                                </div>
+                                <div class="person-thumbnail">
+                                    <a href="images/people/lady/18.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/lady/thumb18.jpg" />
+                                    </a>
+                                </div>
+                                <div class="person-thumbnail">
+                                    <a href="images/people/lady/19.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/lady/thumb19.jpg" />
+                                    </a>
+                                </div>
+                                <div class="person-thumbnail">
+                                    <a href="images/people/lady/20.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/lady/thumb20.jpg" />
+                                    </a>
+                                </div>
+                                <div class="person-thumbnail">
+                                    <a href="images/people/lady/21.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/lady/thumb21.jpg" />
+                                    </a>
+                                </div>
+                                <div class="person-thumbnail">
+                                    <a href="images/people/lady/22.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/lady/thumb22.jpg" />
+                                    </a>
+                                </div>
+                                <div class="person-thumbnail">
+                                    <a href="images/people/lady/23.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/lady/thumb23.jpg" />
+                                    </a>
+                                </div>  
+                                <div class="person-thumbnail">
+                                    <a href="images/people/lady/24.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/lady/thumb24.jpg" />
+                                    </a>
+                                </div>
+                                <div class="person-thumbnail">
+                                    <a href="images/people/lady/25.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/lady/thumb25.jpg" />
+                                    </a>
+                                </div>
+                                <div class="person-thumbnail">
+                                    <a href="images/people/lady/26.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/lady/thumb26.jpg" />
+                                    </a>
+                                </div> 
+                                <div class="person-thumbnail">
+                                    <a href="images/people/lady/27.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/lady/thumb27.jpg" />
+                                    </a>
+                                </div>
+                                <div class="person-thumbnail">
+                                    <a href="images/people/lady/28.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/lady/thumb28.jpg" />
+                                    </a>
+                                </div>
+                                <div class="person-thumbnail">
+                                    <a href="images/people/lady/29.jpg" rel="lightbox[gallery]">
+                                        <img src="images/people/lady/thumb29.jpg" />
+                                    </a>
+                                </div>                                                              
+                                <div style="clear: left;">&nbsp;</div>                                                  
+                            </div>                     
+                        </div>
+                    </div>
+				</div>                
+                <div class="grid_6 col2" style="height:1020px;">
+                    <div class="column2-title col2-content">
+                        <h2>Google Wave</h2>
+                 	</div>
+                    <img src="images/wavetemp.gif" style="padding-left: 70px; padding-top: 10px;" />
+             	</div>  
+            </div>
+			<div class="clear"></div>
+		</div>
+    </div>
+ 	<div id="footer">
+    	&nbsp;
+    </div>
+	  <script type="text/javascript">
+	  	 FontJazz.apply("h2", "bluefont");
+		 FontJazz.apply("h4","bluefont-small");
+		 FontJazz.apply("h5","greyfont-small");				 
+	  </script>
+</body>
+</html>

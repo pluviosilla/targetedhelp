@@ -1,0 +1,37 @@
+
+<h1>Editing recipient</h1>
+
+<% form_for @recipient, :html => { :multipart => true } do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :firstname %><br />
+    <%= f.text_field :firstname %>
+  </p>
+  <p>
+    <%= f.label :lastname %><br />
+    <%= f.text_field :lastname %>
+  </p>
+  <p>
+    <%= f.label :category_id %><br />
+    <%= f.text_field :category_id %>
+  </p>
+  <p>
+    <%= f.label :banner_path %><br />
+    <%= f.text_field :banner_path %>
+  </p>
+  <p>
+    <h2>Upload Avatar</h2>
+    <%= f.file_field :avatar %>
+  </p>
+  <p>
+    <h2>Upload Photo</h2>
+    <%= f.file_field :data %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @recipient %> |
+<%= link_to 'Back', recipients_path %>

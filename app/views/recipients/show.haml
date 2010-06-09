@@ -1,0 +1,64 @@
+.container_16
+  .grid_10
+    .item
+      %h2 Description
+      .person-item-content
+        %p.blue
+          %h4 #{@recipient.firstname + ' ' + @recipient.lastname}
+        .default-padding
+          %p.blue Family Economics:
+          %p= @recipient.bio.family_economics
+          - @recipient.bio.bio_fields.each do |biofield|
+            %p.blue= biofield.field_name + ":"
+            %p= biofield.content
+    .tab-bar                   
+      %ul
+        %li.blue(onclick="fadeTab('needs',this)") needs
+        %li(onclick="fadeTab('recommendations',this)") recommendations
+        %li(onclick="fadeTab('methods',this)") methods of contributing
+        %li(onclick="fadeTab('contributors',this)") contributors
+        %li(onclick="fadeTab('photos',this)") photos
+    .item
+      #needs.person-item
+        %h2 Needs
+      #recommendations.person-item.invisible
+        %h2 Recommendations
+        #recommendations-content.person-item-content
+          #recommend.invisible(style="line-height: 20px;")
+            %h4 Fill in your recommendation
+            = render :partial => "recommend_form", :locals => {:recipient => @recipient}
+
+          #new-recommendation
+          = render :partial => "recommendation", :collection => @recipient.recommendations
+
+          - if @recipient.recommendations.length == 0
+            #no_recommends
+              %h4 there are no recommendations
+            %br/
+
+          - if current_user && !already_recommended?(current_user,@recipient)
+            %a#recommend_link(href="javascript:openRecommendation()") Recommend
+            %br/
+            %br/
+
+      #methods.person-item.invisible
+        %h2 Methods of contributing
+
+      #contributors.person-item.invisible
+        %h2 Contributors
+
+      #photos.person-item.invisible
+        %h2 Photos
+        - @recipient.assets.each do |asset|
+          = image_tag asset.url(:small)
+
+
+  .grid_6.col2
+    .col2-content
+
+.clear
+
+:plain
+  <script>
+    corners();
+  </script>

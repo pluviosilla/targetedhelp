@@ -1,0 +1,19 @@
+.container_16
+  .grid_6
+    %h2 Edit User
+    .item-content
+      = render :partial => 'form'
+  .grid_5.col2
+    .col2-contentwpadding
+      %h2 Avatar
+      .item-content
+        = image_tag @user.avatar.url(:small)
+        %br/
+        %br/
+        - form_for @user, :html => { :multipart => true } do |f|
+          %p= f.file_field  :avatar, :size => "25"
+          %br/
+          = f.submit "Upload Avatar"
+    
+
+.clear

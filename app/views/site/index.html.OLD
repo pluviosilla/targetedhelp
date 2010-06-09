@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Targeted Help - Home</title>
+    <%= stylesheet_link_tag "main" %>
+    <%= stylesheet_link_tag "960" %>
+    <%= javascript_include_tag "fontjazz" %>
+    <%= javascript_include_tag "bluefont" %>
+</head>
+<body>
+
+	<div id="main">
+    	<div id="top">
+	    	<img src="/images/targetedhelp.gif" style="float: left;" />
+            <!--<img src="/images/menu.png" style="float: left; padding-top: 27px;"  />-->
+            <div id="menu">
+            	<ul>
+
+<%= link_to image_tag("search.gif", :border=>0), :action => 'show', :id => user %>
+
+
+                    <li>image_tag "menu/home-selected.gif"</li>
+
+                    <li><%= link_to image_tag("menu/people.html") %></li>
+
+<img src="/images/menu/people.gif" /></a></li>
+
+                    <li><a href="people.html"><img src="/images/menu/people.gif" /></a></li>
+                    <li><img src="/images/menu/ministries.gif" /></li>
+		    <li><img src="/images/menu/microbusinesses.gif" /></li>
+                    <li><img src="/images/menu/search.gif" /></li>
+
+
+                    <li><img src="/images/menu/home-selected.gif" /></li>
+                    <li><a href="people.html"><img src="/images/menu/people.gif" /></a></li>
+                    <li><img src="/images/menu/ministries.gif" /></li>
+		    <li><img src="/images/menu/microbusinesses.gif" /></li>
+                    <li><img src="/images/menu/search.gif" /></li>
+                </ul>
+            </div>
+        </div>
+        <img src="/images/bannertemp.jpg" />
+        <div id="middle">
+        
+            <div class="container_16">
+              <div class="grid_10">
+                        <h2>Welcome to our organization</h2>
+                        <div style=" min-height: 400px; padding-right: 5px; padding-left: 22px; padding-top: 5px;">
+                            <p>Do you have the spiritual gift of giving? If so, we want to expand your giving horizons. We 
+                            currently have four categories: The Poor, The Sick, Ministries and Microbusinesses, but we plan 
+                            to offer more. Suggest a new one to us!</p>
+                            <p>TargetedHelp.org is a new concept that is long overdue - bringing giving into the Information Age. 
+                            By giving directly to those in need, we cut the cost of giving to a minimum and empower charitable 
+                            organizations with a &quot;presence on the ground&quot; to focus on their more vital role of collecting
+                            information. </p>
+                            <p>&nbsp;</p>
+                            <p>Check out some of the images of our first potential recipients (as well as valued collaborators):</p>
+                  </div>
+                        <img src="/images/imagestripe.gif" />
+				</div>
+                
+                <div class="grid_6 col2 ">
+                    <div class="column2-title col2-content">
+                        <h2>How it works</h2>
+                 	</div>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>                   
+                    <div class="column2-title col2-content">
+                        <p>You can read more about this exciting new concept here: 
+                        <a href="mission-statement.html" class="grey" style="font-weight:bold">Our Mission Statement</a></p>                     
+                    </div>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>                   
+                    <div class="column2-title col2-content">
+                        <p>You can read about our vision of the critical importance of information here:<br/>
+                        <a href="information.html" class="grey" style="font-weight:bold">The Role of Information</a></p>                     
+                    </div>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>                   
+                    <div class="column2-title col2-content">
+                        <p>You can read more about the new mechanism for giving we propose here:<br/> 
+                        <a href="giving-mechanism.html" class="grey" style="font-weight:bold">The Mechanics of Giving Directly</a></p>                     
+                    </div>
+             	</div>
+            </div>
+			<div class="clear"></div>
+		</div>
+    </div>
+ 	<div id="footer">
+    	&nbsp;
+    </div>
+	  <script type="text/javascript">
+	  	 FontJazz.apply("h2", "bluefont");
+	  </script>
+</body>
+</html>
