@@ -1,8 +1,19 @@
 class Recipient < ActiveRecord::Base
+  has_one :bio
+
+  accepts_nested_attributes_for :bio
+  
+  
   has_many :recommendations, :as => :recommended
   has_many :recommendors, :through => :recommendations
+  has_many :contributions
+
+
+  belongs_to :user
   
-  has_one :bio
+  named_scope :name_like, lambda { |name| {
+            :conditions => ['firstname LIKE ? or lastname LIKE ?',
+                            "%#{name}%","%#{name}%"]}}
 
   has_attached_file :avatar, :styles => {
                              :tiny => "64x64#",
@@ -10,4 +21,5 @@ class Recipient < ActiveRecord::Base
                              :medium => "225x145>"}
 
   acts_as_polymorphic_paperclip
+  
 end

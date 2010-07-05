@@ -1,0 +1,10 @@
+.container_16
+  .grid_16
+    %h2= @user.firstname + " " + @user.lastname + "'s" + " Chain of Trust"
+    .default-padding
+      = render :partial => "recommendation", :collection => @recommendations
+      
+      - @user.recipients.each do |recipient|
+        = render :partial => "recommendation", :collection => recipient.recommendations
+
+.clear

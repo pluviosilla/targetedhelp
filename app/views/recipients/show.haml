@@ -3,14 +3,17 @@
     .item
       %h2 Description
       .person-item-content
-        %p.blue
+        %div(style="padding-bottom: 10px;")
           %h4 #{@recipient.firstname + ' ' + @recipient.lastname}
+          - if @owner
+            %span(style="font-size: 13px;")= link_to " edit this recipient", edit_recipient_path(@recipient)
+        %span.blue Family Economics:
         .default-padding
-          %p.blue Family Economics:
           %p= @recipient.bio.family_economics
-          - @recipient.bio.bio_fields.each do |biofield|
-            %p.blue= biofield.field_name + ":"
-            %p= biofield.content
+        - @recipient.bio.bio_fields.each do |biofield|
+          %span.blue= biofield.field_name + ":"
+          .default-padding
+            = biofield.content
     .tab-bar                   
       %ul
         %li.blue(onclick="fadeTab('needs',this)") needs
@@ -21,6 +24,8 @@
     .item
       #needs.person-item
         %h2 Needs
+        .default-padding
+          <b>No information available at this time</b>
       #recommendations.person-item.invisible
         %h2 Recommendations
         #recommendations-content.person-item-content
@@ -36,29 +41,66 @@
               %h4 there are no recommendations
             %br/
 
-          - if current_user && !already_recommended?(current_user,@recipient)
+          - if current_user && !already_recommended?(current_user,@recipient,"Recommendor") && current_user.id != @recipient.user_id
             %a#recommend_link(href="javascript:openRecommendation()") Recommend
             %br/
             %br/
 
       #methods.person-item.invisible
         %h2 Methods of contributing
-
+        .default-padding
+          - if @recipient.bio.contribution_methods.length == 0
+            <b>No information available at this time</b>
+          - else	
+            =@recipient.bio.contribution_methods
       #contributors.person-item.invisible
         %h2 Contributors
-
+        .default-padding
+          - @recipient.contributions.each do |contribution|
+            %span.blue= contribution.contributor_name + " - "
+            %span= contribution.amount+ " U.S. Dollars"                                                
+                    
       #photos.person-item.invisible
         %h2 Photos
         - @recipient.assets.each do |asset|
           = image_tag asset.url(:small)
 
 
-  .grid_6.col2
-    .col2-content
+  .grid_6.col2    
+    .col2-contentwpadding
+      %h2 Google Wave
+      - if @recipient.wave_id
+        -if @recipient.wave_id.length > 0
+          :plain
+            <script type="text/javascript">
 
+            google.load("wave", "1");
+
+            function initialize() {
+              var waveFrame = document.getElementById("waveframe");
+              var embedOptions = {
+                target: waveFrame
+              }
+              var wavePanel = new google.wave.WavePanel(embedOptions);
+
+          = "wavePanel.loadWave('" + @recipient.wave_id + "');"
+
+          :plain
+            }
+            google.setOnLoadCallback(initialize);
+            </script>
+        -else
+          %div(style="text-align: center; margin-top: 30px; color: #999999; font-size: 21px;")
+            No google wave has been attached to this recipient
+      -else
+        %div(style="text-align: center; margin-top: 30px; color: #999999; font-size: 21px;")
+          No google wave has been attached to this recipient
+
+          
+      #waveframe(style="height: 500px; margin-left: 10px;")
+      
 .clear
 
-:plain
-  <script>
-    corners();
-  </script>
+- content_for :javascripts do
+  :plain
+    <script src="http://www.google.com/jsapi" type="text/javascript"></script>

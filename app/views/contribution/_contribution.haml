@@ -1,0 +1,10 @@
+.left(style="margin-right: 10px; width: 330px;")
+  %h3.blue.px19= contribution.contributor_name
+  %div(style="width: 330px; overflow: hidden;")
+    = contribution.amount
+  %br/
+
+- begin
+  - if (contribution_counter+1)%2 == 0
+    .clear
+- rescue Exception=>e

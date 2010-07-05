@@ -1,0 +1,152 @@
+-#.title
+  %h2 Edit Recipient
+  
+-#- semantic_form_for @recipient do |form|
+  .container_16.item
+
+    .grid_6
+      .default-left-padding
+        %h4 Basic Information
+        - form.inputs do
+          = form.input :firstname, :input_html => {:size => 30}
+          = form.input :lastname, :input_html => {:size => 30}
+          = form.input :banner_path, :input_html => {:size => 30}
+          = form.input :wave_id, :input_html => {:size => 30}
+
+    .grid_5
+      %div
+        %h4 Avatar
+        %div= image_tag @recipient.avatar.url(:small)
+        %br/
+        - form.inputs do
+          = form.input :avatar, :input_html => {:size => 25}, :label => false
+
+    .grid_5
+      %div
+        %h4 Photos
+        - @recipient.assets.each do |asset|
+          = image_tag asset.url(:tiny)
+          = form.file_field :data, :size => "25"
+          = form.submit "Upload Photo"
+
+        -#- form_for @recipient, :html => { :multipart => true } do |f|
+          %p= f.file_field :data, :size => "25"
+          = f.submit "Upload Photo"
+
+    .clear
+    %br/
+
+  = form.buttons
+
+-# NON FORMTASTIC HAML
+.title
+  %h2 Edit Recipient
+.container_16.item
+  .grid_6
+    .default-left-padding
+      %h4 Basic Information
+      - form_for @recipient, :html => { :multipart => true } do |f|
+        = f.error_messages
+        %p
+          = f.label :firstname
+          = f.text_field :firstname
+        %p
+          = f.label :lastname
+          = f.text_field :lastname
+        %p
+          = f.label :category_id
+          = f.text_field :category_id
+        %p
+          = f.label :banner_path
+          = f.text_field :banner_path
+        %p
+          = f.label :wave_id
+          = f.text_field :wave_id
+                    
+        %br/
+        = f.submit "Update"
+      %br/
+      -# = link_to "Show Recipient", @recipient
+
+  .grid_5
+    %div
+      %h4 Avatar
+      = image_tag @recipient.avatar.url(:small)
+      %br/
+      %br/
+      - form_for @recipient, :html => { :multipart => true } do |f|
+        %p= f.file_field :avatar, :size => "25"
+        = f.submit "Upload Avatar"
+  .grid_5
+    %div
+      %h4 Photos
+      %div(style="height: 85px;")
+        - @recipient.assets.each do |asset|
+          = image_tag asset.url(:tiny)
+      - form_for @recipient, :html => { :multipart => true } do |f|
+        %p= f.file_field :data, :size => "25"
+        = f.submit "Upload Photo"
+  .clear
+
+%br/
+.title
+  %h2 Bio
+
+.container_16.item
+  .grid_16
+    .default-left-padding.greybar
+      %h4.blue Family Economics
+      - form_for @recipient.bio do |f|
+        = f.text_area :family_economics, :cols => "150", :rows => "6"
+        = f.submit "Update"
+      %br/
+  .clear
+  %br/
+  .grid_9
+    .default-left-padding
+      %h4 Your bio fields
+      .default-padding
+        #bios
+          = render :partial => "/bio/biofield", :collection => @recipient.bio.bio_fields, :as => :bio_field
+          - if @recipient.bio.bio_fields.length == 0
+            #nobios
+              %span.blue.px19 no bio fields
+              %br/
+              %br/
+        %br/
+  .grid_7
+    %div
+      %h4 Add new bio field
+      #custombiofield
+        - form_remote_for BioField.new, :url => {:controller => "bio", :action => "add_field"}, :html => {:id => "biofield_form"} do |f|
+          = hidden_field_tag :bio_id, @recipient.bio.id
+          %p= f.text_field :field_name, :size => "30"
+          -# %p= f.tinymce :content
+          %p= f.text_area :content, :cols => "35", :rows => "4"
+          %p= f.submit "Add Field"
+  .clear          
+
+%br/
+.title
+  %h2 Contributions
+
+.container_16.item
+  .grid_16
+    .default-left-padding.greybar
+      %h4 Methods of contribution
+  .clear
+  %br/
+  .grid_9
+    .default-left-padding
+      %h4 Contributors
+
+  .grid_7
+    %div
+      %h4 Add a Contribution
+      - form_remote_for Contribution.new, :url => {:controller => "contribution", :action => "add_contribution"} do |f|
+        = hidden_field_tag :recipient_id, @recipient.id
+        %p= f.text_field :contributor_name, :size => "30"
+        %p= f.text_field :amount, :size => "30" 
+        %p= f.submit "Add Field"
+              
+  .clear

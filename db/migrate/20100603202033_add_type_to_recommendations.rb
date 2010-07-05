@@ -4,6 +4,6 @@ class AddTypeToRecommendations < ActiveRecord::Migration
   end
 
   def self.down
-    remove_column :recommendations, :recommended_type, :string
+    remove_column :recommendations, :recommended_type
   end
 end

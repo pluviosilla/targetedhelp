@@ -1,3 +1,11 @@
-%h3.blue.px19= bio_field.field_name
-%span= bio_field.content
-%br/
+.left(style="margin-right: 10px; width: 330px;")
+  %h3.blue.px19= bio_field.field_name
+  %div(style="width: 330px; overflow: hidden;")
+    = bio_field.content
+  %br/
+
+- begin
+  - if (biofield_counter+1)%2 == 0
+    .clear
+- rescue Exception=>e
+

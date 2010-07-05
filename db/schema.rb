@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100603202033) do
+ActiveRecord::Schema.define(:version => 20100628184349) do
 
   create_table "assets", :force => true do |t|
     t.string   "data_file_name"
@@ -41,8 +41,17 @@ ActiveRecord::Schema.define(:version => 20100603202033) do
 
   create_table "bios", :force => true do |t|
     t.integer  "family_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "family_economics"
     t.integer  "recipient_id"
-    t.string   "family_economics"
+    t.text     "contribution_methods"
+  end
+
+  create_table "contributions", :force => true do |t|
+    t.string   "contributor_name"
+    t.string   "amount"
+    t.string   "recipient_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -58,6 +67,8 @@ ActiveRecord::Schema.define(:version => 20100603202033) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.integer  "user_id"
+    t.string   "wave_id"
   end
 
   create_table "recommendations", :force => true do |t|

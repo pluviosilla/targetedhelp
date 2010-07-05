@@ -1,0 +1,21 @@
+.container_16
+  .grid_16
+    %h2 New recipient
+    .default-padding
+      - form_for(@recipient) do |f|
+        = f.error_messages
+        %p
+          = f.label :firstname
+          = f.text_field :firstname
+        %p
+          = f.label :lastname
+          = f.text_field :lastname
+        %p
+          = f.label :category_id
+          = f.text_field :category_id
+        %p
+          = f.label :banner_path
+          = f.text_field :banner_path
+        %p
+          = f.submit "Create Recipient"
+.clear

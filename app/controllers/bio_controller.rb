@@ -18,6 +18,7 @@ class BioController < ApplicationController
   end
   def add_field
     @bio = Bio.find(params[:bio_id])
+    params[:bio_field][:content] = format_to_html(params[:bio_field][:content]); 
     @bio_field = @bio.bio_fields.build(params[:bio_field])
     respond_to do |format|
         if @bio_field.save

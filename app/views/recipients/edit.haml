@@ -1,67 +1,105 @@
-.container_16
-  .grid_6
-    %h2 Edit
-    .person-item-content
-      - form_for @recipient, :html => { :multipart => true } do |f|
-        = f.error_messages
-        %p
-          = f.label :firstname
-          = f.text_field :firstname
-        %p
-          = f.label :lastname
-          = f.text_field :lastname
-        %p
-          = f.label :category_id
-          = f.text_field :category_id
-        %p
-          = f.label :banner_path
-          = f.text_field :banner_path
-        %br/
-        = f.submit "Update"
-  .grid_5.col2
-    .col2-contentwpadding
-      %h2 Bio
-      %p
-        %h4.blue Family Economics
-        - form_for @recipient.bio do |f|
-          %p= f.text_area :family_economics, :cols => "42", :rows => "8"
-          = f.submit "Update"
-      %p
-        %h4 Your bio fields
-        .default-padding
-          #bios
-            = render :partial => "/bio/biofield", :collection => @recipient.bio.bio_fields, :as => :bio_field
-            - if @recipient.bio.bio_fields.length == 0
-              #nobios
-                %span.blue.px19 no bio fields
-                %br/
-                %br/
+.title
+  %h2 Edit Recipient
+- semantic_form_for @recipient, :html => { :multipart => true } do |form|
+  .container_16.item.greybar
+    .grid_6
+      .default-left-padding
+        %h4 Basic Information
+        - form.inputs do
+          = form.input :firstname, :input_html => {:size => 30}
+          = form.input :lastname, :input_html => {:size => 30}
+          = form.input :banner_path, :input_html => {:size => 30}
+          = form.input :wave_id, :input_html => {:size => 30}
+          %h4 Avatar
+          = image_tag @recipient.avatar.url(:tiny)
           %br/
-            
-        %h4 Add new bio field
-        #custombiofield
-          - form_remote_for BioField.new, :url => {:controller => "bio", :action => "add_field"}, :html => {:id => "biofield_form"} do |f|
-            = hidden_field_tag :bio_id, @recipient.bio.id
-            %p= f.text_field :field_name, :size => "36"
-            -# %p= f.tinymce :content
-            %p= f.text_area :content, :cols => "42", :rows => "8"
-            %p= f.submit "Add Field"
-  .grid_5.col2
-    .col2-contentwpadding
-      %h2 Avatar
-      = image_tag @recipient.avatar.url(:small)
-      %br/
-      %br/
-      - form_for @recipient, :html => { :multipart => true } do |f|
-        %p= f.file_field :avatar, :size => "25"
-        = f.submit "Upload Avatar"
-      %h2 Photos
+          = form.input :avatar, :input_html => {:size => 30}, :label => false
+
+        %br/
+        = form.buttons
+        %br/
+    - form.semantic_fields_for :bio do |bio|
+      .grid_5
+        %div
+          %h4 Family Economics
+          = bio.text_area :family_economics, :cols => "40", :rows => "11"
+      .grid_5
+        %div
+          %h4 Methods of Contribution
+          = bio.text_area :contribution_methods, :cols => "40", :rows => "11"
+    .clear
+             
+%br/
+.title
+  %h2 Biography
+.container_16.item.greybar
+  .grid_11
+    .default-left-padding
+      %h4 Your bio fields
+      .default-padding
+        #bios
+          = render :partial => "/bio/biofield", :collection => @recipient.bio.bio_fields, :as => :bio_field
+          - if @recipient.bio.bio_fields.length == 0
+            #nobios
+              %span.blue.px19 no bio fields
+              %br/
+              %br/
+        %br/
+  .grid_5
+    %div
+      %h4 Add new bio field
+      #custombiofield
+        - form_remote_for BioField.new, :url => {:controller => "bio", :action => "add_field"}, :html => {:id => "biofield_form"} do |f|
+          = hidden_field_tag :bio_id, @recipient.bio.id
+          Field Name:
+          %p= f.text_field :field_name, :size => "30"
+          Description:
+          %p= f.text_area :content, :cols => "35", :rows => "4"
+          %p= f.submit "Add Field"
+  .clear          
+
+%br/
+.title
+  %h2 Contributions
+.container_16.item.greybar
+  .grid_11
+    .default-left-padding
+      %h4 Contributions
+      .default-padding
+        #contributions
+          = render :partial => "/contribution/contribution", :collection => @recipient.contributions, :as => :contribution
+          - if @recipient.contributions.length == 0
+            #nocontributions
+              %span.blue.px19 no contributions
+              %br/
+              %br/
+  .grid_5
+    %div
+      %h4 Add a Contribution
+      - form_remote_for Contribution.new, :url => {:controller => "contribution", :action => "add_contribution"}, :html => {:id => "contribution_form"} do |f|
+        = hidden_field_tag :recipient_id, @recipient.id
+        Contributor Name:
+        %p= f.text_field :contributor_name, :size => "30"
+        Amount (U.S. Dollars):
+        %p= f.text_field :amount, :size => "30" 
+        %p= f.submit "Add Field"
+              
+  .clear
+    
+%br/
+.title
+  %h2 Photos
+.container_16.item.greybar
+  .grid_16
+    .default-padding
+      %div(style="height: 70px;")
+        - @recipient.assets.each do |asset|
+          = image_tag asset.url(:tiny)
+  
       - form_for @recipient, :html => { :multipart => true } do |f|
         %p= f.file_field :data, :size => "25"
         = f.submit "Upload Photo"
-
-.clear
-
-= link_to "Show", @recipient
-|
-= link_to "Back", recipients_path
+    %br/        
+  .clear
+.default-padding
+  = link_to "Show Recipient", @recipient

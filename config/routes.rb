@@ -5,6 +5,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :user_sessions
   map.resources :users
+  map.resources :user_hub
+  map.resources :trust_chain
   map.resources :recipients
   map.resources :bio
 

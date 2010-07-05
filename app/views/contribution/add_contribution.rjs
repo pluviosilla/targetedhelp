@@ -1,0 +1,7 @@
+page.insert_html :top, 'contributions', :partial => 'contribution', :locals => {:contribution => @contribution}
+page.hide(:nocontributions)
+page[:contribution_form].reset
+
+#page[:biofield_form].reset
+#page.hide(:nobios)
+#page.call "reapplyJazz"

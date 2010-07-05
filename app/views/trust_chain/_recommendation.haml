@@ -1,14 +1,8 @@
-.recommendation.corner
+.item
   .left(style="margin-right: 10px;")
     = image_tag recommendation.recommendor.avatar.url(:tiny)
   - link_to(recommendation.recommendor) do
     %h4= recommendation.recommendor.firstname + " " + recommendation.recommendor.lastname
   .recommendation-description.left= recommendation.description
   .clear
-  - if recommendation.recommendor.recommendors.length != 0
-    %br/
-    .right
-      - link_to trust_chain_path(recommendation.recommendor) do
-        %h4 view chain of trust
-    .clear
-%br/
+  %br/

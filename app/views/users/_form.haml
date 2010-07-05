@@ -1,0 +1,31 @@
+- form_for @user do |f| 
+  = f.error_messages
+  %p
+    First Name:
+    = f.text_field :firstname
+
+  %p
+    Last Name:
+    = f.text_field :lastname
+
+  %p
+    User Name (used to log in):
+    %br/
+    = f.text_field :username
+
+  %p
+    = f.label :email
+    %br/
+    = f.text_field :email
+
+  %p
+    = f.label :password
+    %br/
+    = f.password_field :password
+
+  %p
+    = f.label :password_confirmation
+    %br/
+    = f.password_field :password_confirmation
+
+  %p= f.submit

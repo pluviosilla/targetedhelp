@@ -1,0 +1,64 @@
+.container_16
+  .grid_16
+    %h2 Welcome back!
+  .clear
+  .optionsbar-grey
+    .grid_11
+      %h4 User Hub
+    .grid_5
+      .col2-contentwpadding 
+        %h4 Recipients
+    .clear
+  .clear
+
+  .grid_11
+    .recommendation.corner(style="height: 60px; margin-top: 10px;")
+      .left(style="margin-right: 10px;")
+        = image_tag current_user.avatar.url(:tiny)
+      %div(style="padding-top: 10px;")
+        %h4= current_user.firstname + " " + current_user.lastname
+      %div
+        %span(style="margin-left: 5px; color: #9b9b9b;") No trust rating
+      -#.recommendation-description.left= recommendation.description
+      .clear
+    %br/
+
+    .item(style="min-height: 0px; padding-bottom: 10px;")
+      .left
+        %h4 Search for people to help:
+      .left
+        - form_for @search do |f|
+          = f.text_field :name_like
+          = f.submit "Search"
+      .clear
+
+
+    - @search_results.each do |result|
+      .item(style="border-color: #cccccc;")
+        .left= image_tag result.avatar.url(:tiny)
+        .left(style="margin-left: 10px; margin-top: 25px;")
+          - link_to result do
+            .left
+              %h4= result.firstname + " " + result.lastname
+        
+      
+  .grid_5.col2
+    .col2-contentwpadding
+      - current_user.recipients.each do |recipient|
+        .item
+          .left= image_tag recipient.avatar.url(:tiny)
+          .left(style="margin-left: 10px; margin-top: 25px;")
+            - link_to recipient do
+              .left
+                %h4= recipient.firstname + " " + recipient.lastname
+            .left
+              = link_to "- edit", edit_recipient_path(recipient)
+      - if current_user.recipients.length == 0
+        %div(style="margin-top: 10px;")
+          %h4 No recipients have been added
+      %div(style="margin-top: 10px;")
+        = link_to 'Add New Recipient', new_recipient_path
+
+  .clear
+
+.clear

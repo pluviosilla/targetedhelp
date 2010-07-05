@@ -15,9 +15,10 @@ class RecipientsController < ApplicationController
   def recommend
     recipient_id = params[:recipient_id].to_s
     @recipient = Recipient.find(recipient_id)
-    params[:recommendation][:recommendor_id] = current_user.id    
+    params[:recommendation][:recommendor_id] = current_user.id
+    params[:recommendation][:description] = format_to_html(params[:recommendation][:description])
     @recommendation = @recipient.recommendations.build(params[:recommendation])
-
+    
     respond_to do |format|
       if @recommendation.save
         #render :partial => 'recommendation', :locals => {:recommendation => recommendation}        
@@ -30,7 +31,7 @@ class RecipientsController < ApplicationController
     @names = params[:name].split("_")
     @recipient = Recipient.find_by_firstname_and_lastname(@names[0],@names[1])
     @title_path = "<img src='" + @recipient.banner_path + "'/>"
-    respond_to do |format|
+    respond_to do |format|s
       format.html # show.html.erb
       format.xml  { render :xml => @recipient }
     end
@@ -38,9 +39,15 @@ class RecipientsController < ApplicationController
   end
   # GET /recipients/1
   # GET /recipients/1.xml
-  def show
-    @recipient = Recipient.find(params[:id])
+  def show    
+    @recipient = Recipient.find(params[:id])    
     @title_path = "<img src='" + @recipient.banner_path + "'/>"
+    @owner = false;
+    if current_user
+      if current_user.id == @recipient.id
+        @owner = true;
+      end
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @recipient }
@@ -61,14 +68,17 @@ class RecipientsController < ApplicationController
   # GET /recipients/1/edit
   def edit
     @recipient = Recipient.find(params[:id])
-    @recipient.bio ||= Bio.new
+    if current_user && @recipient.user_id != current_user.id
+      redirect_to @recipient
+    end
   end
 
   # POST /recipients
   # POST /recipients.xml
   def create
-    @recipient = Recipient.new(params[:recipient])
-
+    #@recipient = Recipient.new(params[:recipient])
+    @recipient = current_user.recipients.build(params[:recipient])
+    @recipient.bio = Bio.new
     respond_to do |format|
       if @recipient.save
         flash[:notice] = 'Recipient was successfully created.'
@@ -85,7 +95,11 @@ class RecipientsController < ApplicationController
   # PUT /recipients/1.xml
   def update
     @recipient = Recipient.find(params[:id])
-
+    if params[:recipient][:bio]
+      bio_params = params[:recipient][:bio]
+      bio_params[:contribution_methods] = format_to_html(bio_params[:contribution_methods])
+      bio_params[:family_economics] = format_to_html(bio_params[:family_economics])
+    end
     #asset = params[:recipient][:data]
     #if asset
       #@recipient.assets.attach(asset)
