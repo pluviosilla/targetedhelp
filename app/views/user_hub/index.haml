@@ -53,6 +53,8 @@
                 %h4= recipient.firstname + " " + recipient.lastname
             .left
               = link_to "- edit", edit_recipient_path(recipient)
+              = link_to ' - destroy', recipient, :confirm => 'Are you sure?', :method => :delete
+              
       - if current_user.recipients.length == 0
         %div(style="margin-top: 10px;")
           %h4 No recipients have been added

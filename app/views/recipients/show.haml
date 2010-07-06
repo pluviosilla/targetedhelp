@@ -49,10 +49,11 @@
       #methods.person-item.invisible
         %h2 Methods of contributing
         .default-padding
-          - if @recipient.bio.contribution_methods.length == 0
-            <b>No information available at this time</b>
-          - else	
-            =@recipient.bio.contribution_methods
+          - if @recipient.bio
+            - if @recipient.bio.contribution_methods.length == 0
+              <b>No information available at this time</b>
+            - else
+              =@recipient.bio.contribution_methods
       #contributors.person-item.invisible
         %h2 Contributors
         .default-padding

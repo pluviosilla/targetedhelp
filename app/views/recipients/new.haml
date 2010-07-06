@@ -2,20 +2,12 @@
   .grid_16
     %h2 New recipient
     .default-padding
-      - form_for(@recipient) do |f|
-        = f.error_messages
-        %p
-          = f.label :firstname
-          = f.text_field :firstname
-        %p
-          = f.label :lastname
-          = f.text_field :lastname
-        %p
-          = f.label :category_id
-          = f.text_field :category_id
-        %p
-          = f.label :banner_path
-          = f.text_field :banner_path
-        %p
-          = f.submit "Create Recipient"
+      - semantic_form_for (@recipient) do |form|
+        = form.error_messages
+        - form.inputs do
+          = form.input :firstname, :label => "First Name"
+          = form.input :lastname, :label => "Last Name"
+          = form.input :category_id, :as => :select, :collection => {"Sick" => 1, "Poor" => 2}
+          = form.input :banner_path, :label => "Banner Path (optional)", :required => false          
+        = form.buttons
 .clear

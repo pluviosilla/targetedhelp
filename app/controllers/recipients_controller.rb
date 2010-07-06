@@ -40,8 +40,12 @@ class RecipientsController < ApplicationController
   # GET /recipients/1
   # GET /recipients/1.xml
   def show    
-    @recipient = Recipient.find(params[:id])    
-    @title_path = "<img src='" + @recipient.banner_path + "'/>"
+    @recipient = Recipient.find(params[:id])
+    if @recipient.banner_path.length != 0
+      @title_path = "<img src='" + @recipient.banner_path + "'/>"
+    else
+      @title_path = DEFAULT_BANNER_PATH
+    end
     @owner = false;
     if current_user
       if current_user.id == @recipient.id
@@ -79,6 +83,10 @@ class RecipientsController < ApplicationController
     #@recipient = Recipient.new(params[:recipient])
     @recipient = current_user.recipients.build(params[:recipient])
     @recipient.bio = Bio.new
+    
+    @recipient.bio.family_economics = ""
+    @recipient.bio.contribution_methods = ""
+
     respond_to do |format|
       if @recipient.save
         flash[:notice] = 'Recipient was successfully created.'
