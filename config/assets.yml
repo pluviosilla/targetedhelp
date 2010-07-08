@@ -1,0 +1,17 @@
+javascript_compressor: closure
+template_function: off
+javascripts:
+  main:
+    - public/javascripts/fontjazz.js
+    - public/javascripts/bluefont.js
+    - public/javascripts/smallfonts.js
+    - public/javascripts/jquery.js
+    - public/javascripts/jquery-ui.js
+    - public/javascripts/jquery.corner.js
+    - public/javascripts/jrails.js
+    - public/javascripts/application.js
+
+stylesheets:
+  main:
+    - public/stylesheets/main.css
+    - public/stylesheets/960.css

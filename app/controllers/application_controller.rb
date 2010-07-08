@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
+  before_filter { Jammit.packager.precache_all } if Rails.env.development?
+
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
   helper_method :current_user, :format_to_html
